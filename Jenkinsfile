@@ -1,10 +1,23 @@
 pipeline {
 	agent any
-	stages{
-		stage('Build'){
-			steps{
-			   sh 'mvn clean package'
-			   sh "docker build . -t tomcatwebapp:${env.BUILD_ID}"
+	stagesn{
+		stage('one') {
+			steps {
+			      echo 'hi this is arpitha'
 			      }
 				}
+		stage('two') {
+			steps {
+			      input('do yu want to proceed?')
+			}
+				}
+		stage('three') {
+			when {
+				not {
+			              branch "master"
+			      }
+				}
+			steps {
+				echo "hello"
+			}
 	}
